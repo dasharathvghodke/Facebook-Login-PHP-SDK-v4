@@ -1,4 +1,5 @@
 <?php
+
 /*
 	Configuring Path To Facebook SDK
 */
@@ -21,8 +22,8 @@
 	APP_ID and APP_SECRET
 	Make sure your app is active; (Green Round symbol appears bext to app name.)
 */
-	FacebookSession::setDefaultApplication( '279604988900782','71afd6a92927d3e931d751ce9cf74025');
-	$helper = new FacebookRedirectLoginHelper('http://localhost/fb/index.php');
+	FacebookSession::setDefaultApplication( 'APP_ID','APP_SECRET');
+	$helper = new FacebookRedirectLoginHelper('http://localhost/fb/index.php'); //main page
 	try{
 	   $session = $helper->getSessionFromRedirect();
 	}
@@ -44,7 +45,7 @@
 	if(isset($_SESSION['facebook_token'])){
 	  $session = new FacebookSession($_SESSION['facebook_token']);
 	  try{
-	       $session->Validate('279604988900782','71afd6a92927d3e931d751ce9cf74025');
+	       $session->Validate('APP_ID','APP_SECRET');
 	  }catch(FacebookAuthorizationException $e){
 	        $session ="";
 	  }
